@@ -61,7 +61,7 @@ if "answers" not in st.session_state:
 # START SCREEN
 # =====================
 if st.session_state.step == "start":
-    st.image("https://via.placeholder.com/220x80/0D9488/FFFFFF?text=ObserIQ", width=220)
+    st.image("logo.png", width=200)
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("<h1 class='calm-header'>Feeling rushed?<br>Let’s pause together.</h1>", unsafe_allow_html=True)
