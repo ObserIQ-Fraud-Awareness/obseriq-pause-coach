@@ -10,36 +10,65 @@ st.set_page_config(
 st.markdown("""
 <style>
     .stApp {
-        background-color: #F7F9FC;
+        background-color: #F8F9FA;
         color: #0F172A;
     }
-    h1, h2, h3 {
+    h1 {
+        font-size: 3rem !important;
+        line-height: 1.15;
+        text-align: center;
         color: #0F172A;
-        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    h2 {
+        font-size: 1.8rem !important;
+        color: #0F172A;
     }
     .stButton > button {
-        background-color: #0D9488 !important;
+        background-color: #00B4D8 !important;
         color: white !important;
-        font-size: 1.4rem !important;
-        font-weight: 600 !important;
-        padding: 1.1rem 2rem !important;
-        border-radius: 14px !important;
+        font-size: 1.55rem !important;
+        font-weight: 700 !important;
+        padding: 1.35rem 2.5rem !important;
+        border-radius: 20px !important;
         border: none !important;
         width: 100% !important;
+        box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
     }
     .stButton > button:hover {
-        background-color: #0F766E !important;
+        background-color: #0096C7 !important;
+        transform: translateY(-2px);
     }
     .stRadio label {
-        font-size: 1.15rem !important;
+        font-size: 1.35rem !important;
         color: #0F172A !important;
         font-weight: 500 !important;
     }
+    .small-note {
+        font-size: 1.1rem;
+        color: #64748B;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .script-box {
+        background-color: #E0F2FE;
+        padding: 2rem;
+        border-radius: 20px;
+        border-left: 10px solid #00B4D8;
+        margin: 1.5rem 0;
+    }
+    .action-box {
+        background-color: #F0FDF4;
+        padding: 2rem;
+        border-radius: 20px;
+        border-left: 10px solid #16A34A;
+        margin: 1.5rem 0;
+    }
     .calm-header {
-        font-size: 2.6rem;
+        font-size: 3rem;
         line-height: 1.15;
         text-align: center;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -61,26 +90,26 @@ if "answers" not in st.session_state:
 # START SCREEN
 # =====================
 if st.session_state.step == "start":
-    st.image("logo.png", width=200)
+    st.image("https://via.placeholder.com/260x90/00B4D8/FFFFFF?text=ObserIQ", width=260)
     st.markdown("<br>", unsafe_allow_html=True)
     
     st.markdown("<h1 class='calm-header'>Feeling rushed?<br>Let’s pause together.</h1>", unsafe_allow_html=True)
     
     st.markdown(
-        "<p style='font-size:1.35rem; text-align:center; max-width:600px; margin:0 auto;'>"
+        "<p style='font-size:1.55rem; text-align:center; max-width:620px; margin:0 auto; line-height:1.5;'>"
         "Scammers win when you act fast.<br>"
         "Take 60 seconds before you pay, click, or share.</p>",
         unsafe_allow_html=True
     )
     
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
     
     if st.button("PAUSE — Tap to start", key="start_btn", use_container_width=True):
         st.session_state.step = "questions"
         st.rerun()
     
     st.markdown(
-        "<p class='small-note'>Someone is on the phone now • Works on any phone browser</p>",
+        "<p class='small-note'>Someone is on the phone now • Works on any phone browser • Free & private</p>",
         unsafe_allow_html=True
     )
 
@@ -90,7 +119,8 @@ if st.session_state.step == "start":
 # =====================
 elif st.session_state.step == "questions":
     st.markdown("<h2 style='text-align:center;'>Quick Pause Questions</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align:center; font-size:1.1rem;'>Answer honestly. This helps us give you the right words and steps.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center; font-size:1.25rem;'>Answer honestly. This helps us give you the right words and steps.</p>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     questions = [
         {
@@ -154,7 +184,7 @@ elif st.session_state.step == "questions":
 # RESULT SCREEN
 # =====================
 elif st.session_state.step == "result":
-    st.markdown("<h2 style='text-align:center; color:#2EC4B6;'>Stop. This has warning signs.</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center; color:#16A34A;'>Stop. This has warning signs.</h2>", unsafe_allow_html=True)
     
     payment = st.session_state.answers.get("payment", "")
     secret = st.session_state.answers.get("secret", "")
@@ -178,7 +208,7 @@ elif st.session_state.step == "result":
     
     st.markdown("<div class='script-box'>", unsafe_allow_html=True)
     st.markdown("**Say this out loud, then hang up:**")
-    st.markdown(f"<h3 style='margin-top:1rem;'>{script}</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='margin-top:1rem; font-size:1.6rem;'>{script}</h3>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
